@@ -1,34 +1,268 @@
 /* -------------------  MOBILE  --------------------- */
 
+html,
 body {
-  display: flex;
-  flex-direction: column;
-  font-family: Arial;
+  font-size: 16px;
   min-height: 100vh;
+  font-family: 'Sora', sans-serif;
 }
 
-header {
-  /* header styles */
+a {
+  text-decoration: none;
 }
 
-main {
-  flex: 1;
-  padding: 20px;
+figure {
+  margin: 0;
+  padding: 0;
 }
 
-footer {
-  /* footer styles */
+.wrapper {
+  width: 100%;
+  max-width: 1200px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.section {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.section-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.mx-auto {
+  margin: 0 auto;
+}
+
+.header {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-items {
+  display: none;
+}
+
+.nav-item {}
+
+.nav-item-link {
+  color: #000;
+}
+
+.nav-item-link:hover {
+  color: rgba(169, 7, 7, 0.92);
+}
+
+.hero {
+  background: linear-gradient(73.89deg, rgba(169, 7, 7, 0.92) -21.33%, rgba(154, 11, 7, 0.907755) 1.57%, rgba(83, 28, 5, 0.85) 100.74%);
+  height: 320px;
+  width: 100%;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  color: #FFF;
+}
+
+.hero-title {
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.hero-subtitle {
+  font-weight: 400;
+  font-size: 18px;
+  margin-top: .6rem;
+}
+
+.back-to-home {
+  margin-top: 1.5rem;
+  margin-bottom: .5rem;
+}
+
+.back-to-home .back-link {
+  color: #555;
+  font-size: 13px;
+}
+
+.back-to-home .back-link:hover {
+  color: rgba(169, 7, 7, 0.92);
+}
+
+.apod-section-title {
+  font-weight: 700;
+  font-size: 18px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.apod-figcaption {
+  text-align: right;
+  font-size: 12px;
+}
+
+.rovers-list-section {
+  background-color: #000;
+  color: #FFF;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.rovers-list-section-header {
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+
+.rovers-list-section-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: rgba(169, 7, 7, 0.92);
+}
+
+.rovers-list-section-subtitle {}
+
+.rovers-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  gap: 1rem;
+}
+
+.rovers-list-item {
+  width: 100%;
+  height: 160px;
+}
+
+.rovers-list-item-link {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(73.89deg, rgba(169, 7, 7, 0.92) -21.33%, rgba(154, 11, 7, 0.907755) 1.57%, rgba(83, 28, 5, 0.85) 100.74%);
+  border-radius: 8px;
+  padding: 1rem;
+  color: #FFF;
+  height: 100%;
+}
+
+.rovers-list-item-link:hover {
+  box-shadow: 3px 3px 3px rgba(169, 7, 7, 0.32);
+}
+
+.rovers-list-item-link span {
+  display: block;
+}
+
+.rovers-list-item-name {
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: .4rem;
+}
+
+.rovers-list-item-details-btn {
+  font-size: 12px;
+}
+
+.rover-detail-info {
+  font-size: 12px;
+  margin-bottom: .4rem;
+}
+
+.rover-detail-photos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.rover-detail-photo {
+  width: 100%;
+}
+
+.rover-detail-photo-wrapper {
+  height: 400px;
+  overflow: hidden;
+  margin-bottom: .6rem;
+}
+
+.rover-detail-photo img {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+.rover-detail-photo span {
+  display: block;
+  font-size: 12px;
+  margin-bottom: .4rem;
+}
+
+.footer {
+  background-color: #000;
+  color: #FFF;
+  padding-top: .6rem;
+  padding-bottom: .6rem;
+  border-top: 1px solid rgba(169, 7, 7, 0.92);
+  margin-top: 3rem;
+}
+
+.footer p {
+  font-size: 12px;
+  margin-top: .4rem;
+  margin-bottom: .4rem;
 }
 
 /* -------------------  TABLET  --------------------- */
 @media (min-width: 768px) {
-  /* use mobile */
+  .nav-items {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .hero-title {
+    font-size: 50px;
+  }
+  
+  .hero-subtitle {
+    font-size: 24px;
+  }
+  
+  .rovers-list-item {
+    width: calc(50% - .5rem);
+  }
+  
+  .rover-detail-photo {
+    width: calc(50% - .5rem);
+  }
+
+  .footer .wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
 
 /* -------------------  DESKTOP  -------------------- */
 
 @media (min-width: 1224px) {
   /* use mobile */
+  .rover-detail-photos {
+    gap: 0.6rem;
+  }
+
+  .rover-detail-photo {
+    width: calc(33.333% - .4rem);
+  }
 }
 
 /* -------------------  LARGE SCREENS  -------------- */
