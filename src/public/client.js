@@ -53,13 +53,15 @@ const Logo = () => {
     `
 }
 
+const LoopRovers = (rovers, callback) => {
+    return rovers.map(callback()).join('')
+}
+
 const NavBar = (rovers) => {
     if (rovers) {
-        let roversLinks = rovers.map(NavLink()).join('')
-
         return `
             <ul class="nav-items">
-               ${roversLinks}
+                ${LoopRovers(rovers, NavLink)}
             </ul>
         `
     }
@@ -107,7 +109,7 @@ const Index = (user, apod, rovers) => {
                     but generally help with discoverability of relevant imagery.
                 </p>
             </div>
-            ${ImageOfTheDay(apod)}
+            ${ImageOfTheDay(apod, ApodMediaType)}
 
             ${RoversListSection(rovers)}
         </section>
@@ -131,7 +133,7 @@ const RoversListSection = (rovers) => {
 const RoversList = (rovers) => {
     return `
         <ul class="rovers-list">
-            ${rovers.map(RoversListItem()).join('')}
+            ${LoopRovers(rovers, RoversListItem)}
         </ul>
     `
 }
@@ -198,7 +200,7 @@ const Greeting = (name) => {
 }
 
 // Example of a pure function that renders infomation requested from the backend
-const ImageOfTheDay = (apod) => {
+const ImageOfTheDay = (apod, callback) => {
 
     // If image does not already exist, or it is not from today -- request it again
     const today = new Date()
@@ -210,6 +212,10 @@ const ImageOfTheDay = (apod) => {
         getImageOfTheDay()
     }
 
+    return callback(apod)
+}
+
+const ApodMediaType = (apod) => {
     // check if the photo of the day is actually type video!
     if (apod.image && apod.image.media_type === "video") {
         return (`
@@ -232,7 +238,6 @@ const ImageOfTheDay = (apod) => {
             </div>
         `) : ``
     }
-
 }
 
 const Footer = () => {
