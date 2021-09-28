@@ -211,12 +211,13 @@ const ImageOfTheDay = (apod) => {
     }
 
     // check if the photo of the day is actually type video!
-    if (apod.media_type === "video") {
+    if (apod.image && apod.image.media_type === "video") {
         return (`
             <div class="section wrapper mx-auto">
-            <p>See today's featured video <a href="${apod.url}">here</a></p>
-            <p>${apod.title}</p>
-            <p>${apod.explanation}</p>
+            <h3 class="apod-section-title">Astronomy Picture of the Day</h3>
+            <p>See today's featured video <a target="_blank" href="${apod.image.url}">here</a></p>
+            <p>${apod.image.title}</p>
+            <p>${apod.image.copyright}</p>
             </div>
         `)
     } else {
