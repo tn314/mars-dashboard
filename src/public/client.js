@@ -218,26 +218,34 @@ const ImageOfTheDay = (apod, callback) => {
 const ApodMediaType = (apod) => {
     // check if the photo of the day is actually type video!
     if (apod.image && apod.image.media_type === "video") {
-        return (`
-            <div class="section wrapper mx-auto">
-            <h3 class="apod-section-title">Astronomy Picture of the Day</h3>
-            <p>See today's featured video <a target="_blank" href="${apod.image.url}">here</a></p>
-            <p>${apod.image.title}</p>
-            <p>${apod.image.copyright}</p>
-            </div>
-        `)
+        return ApodVideo(apod)
     } else {
-        return (apod && apod.image) ?  (`
-            <h3 class="apod-section-title wrapper mx-auto">Astronomy Picture of the Day</h3>
-            <figure>
-                <img src="${apod.image.url}" height="350px" width="100%" />
-                <figcaption class="apod-figcaption wrapper mx-auto">${apod.image.title} &copy; ${apod.image.copyright}</figcaption>
-            </figure>
-            <div class="section wrapper mx-auto">
-                <p>${apod.image.explanation}</p>
-            </div>
-        `) : ``
+        return (apod && apod.image) ? ApodImage(apod)  : ``
     }
+}
+
+const ApodVideo = (apod) => {
+    return (`
+        <div class="section wrapper mx-auto">
+        <h3 class="apod-section-title">Astronomy Picture of the Day</h3>
+        <p>See today's featured video <a target="_blank" href="${apod.image.url}">here</a></p>
+        <p>${apod.image.title}</p>
+        <p>${apod.image.copyright}</p>
+        </div>
+    `)
+}
+
+const ApodImage = (apod) => {
+    return (`
+        <h3 class="apod-section-title wrapper mx-auto">Astronomy Picture of the Day</h3>
+        <figure>
+            <img src="${apod.image.url}" height="350px" width="100%" />
+            <figcaption class="apod-figcaption wrapper mx-auto">${apod.image.title} &copy; ${apod.image.copyright}</figcaption>
+        </figure>
+        <div class="section wrapper mx-auto">
+            <p>${apod.image.explanation}</p>
+        </div>
+    `)
 }
 
 const Footer = () => {
@@ -275,8 +283,6 @@ const getRovers = () => {
                     return rover;
                 });
             }));
-
-
         }).then((rovers) => updateStore('rovers', rovers ))
 }
 
